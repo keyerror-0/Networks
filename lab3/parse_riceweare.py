@@ -8,12 +8,12 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+
+
+
 parser = argparse.ArgumentParser(description= 'Choose category to parse')
 parser.add_argument('-c', "--category", default= 'all', type= str)
 category = parser.parse_args().category
-
-
-
 
 
 def pagination_process(driver: webdriver.Chrome):
