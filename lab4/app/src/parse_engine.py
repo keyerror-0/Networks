@@ -15,7 +15,7 @@ from app.models import Item, Category
 class Parser:
     def __init__(self):
         self.driver = self._init_driver()
-        self.base_url = "https://ricewear.com"  # Укажите базовый URL
+        self.base_url = "https://ricewear.com"
 
     def _init_driver(self) -> webdriver.Chrome:
         options = Options()
