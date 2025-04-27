@@ -2,11 +2,6 @@
 
 Веб-приложение для хранения ссылок с использованием Flask и PostgreSQL, развертываемое в Docker-контейнерах.
 
-## Требования
-
-- Docker 20.10+
-- Git 2.25+
-
 ## Установка и запуск
 
 ### 1. Клонирование репозитория
@@ -32,8 +27,8 @@ touch .env
 
 ```env
 # PostgreSQL
-DB_USER=storage_user
-DB_PASSWORD=secure_password123
+DB_USER=your_postgres_username
+DB_PASSWORD=your_postgres_password
 DB_NAME=url_storage
 DB_HOST=db
 DB_PORT=5432
@@ -60,23 +55,6 @@ SECRET_KEY=your-secret-key-here
 ./stop.sh
 ```
 
-## Структура проекта
-
-```
-lab5/
-├── app/
-│   ├── __init__.py
-│   ├── routes.py
-│   ├── models.py
-│   └── templates/
-├── migrations/
-├── Dockerfile
-├── start.sh
-├── stop.sh
-├── requirements.txt
-└── .env.example
-```
-
 ## Особенности реализации
 
 - 🐳 Два Docker-контейнера: 
@@ -92,6 +70,15 @@ lab5/
 ```bash
 # Для Linux/MacOS
 sudo chmod +x *.sh
+```
+
+### Проблема с форматом конца строки (CRLF → LF)
+```bash
+# Установите dos2unix (если не установлен)
+sudo apt-get install dos2unix
+
+# Конвертируйте файл
+dos2unix start.sh
 ```
 
 ### Занятый порт 5000
