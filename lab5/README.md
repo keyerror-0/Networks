@@ -74,7 +74,7 @@ sudo chmod +x *.sh  # Linux/MacOS
 
 ### Line Ending Conflicts (Windows/WSL)
 ```bash
-sudo apt-get install dos2unix && dos2unix start.sh
+sudo apt-get install dos2unix && dos2unix *.sh
 ```
 
 ### Port Conflicts
