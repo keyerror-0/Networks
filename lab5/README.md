@@ -21,8 +21,8 @@ A web application for storing and managing URLs using Flask and PostgreSQL, depl
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/yourusername/your-repo.git
-cd your-repo/lab5
+git clone git@github.com:keyerror-0/Networks.git
+cd Networks/lab5
 ```
 
 ### 2. Install Docker
