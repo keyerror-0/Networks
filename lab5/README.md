@@ -1,4 +1,3 @@
-```markdown
 # URL Storage Application
 
 A web application for storing and managing URLs using Flask and PostgreSQL, deployed via Docker containers.
