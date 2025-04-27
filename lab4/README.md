@@ -1,4 +1,3 @@
-```markdown
 # RICEWEARE.COM Parser
 
 This project is a web parser for RICEWEARE.COM. Follow the instructions below to set up and run the application.
