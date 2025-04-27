@@ -8,6 +8,6 @@ docker rm web db
 docker network rm app-net
 
 # delete tome (optional) if you want to delete your postgres volume
-# docker volume rm pgdata
+docker volume rm pgdata
 
 echo "Cleanup complete"
