@@ -1,0 +1,82 @@
+<!-- <!doctype html>
+<html>
+    <head>
+        <title>{{ title }} </title>
+    </head>
+    <body>
+        <h1>What category to parse?</h1>
+        {% for category in categories %}
+        <div><p><a href=/parse/{{category}}>{{category}}</a></p></div>
+        {% endfor %}
+    </body>
+</html> -->
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #6c757d;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+        main {
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .category-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .category-item {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(108,117,125,1.000);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .category-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(108,117,125,1.000);
+        }
+        .category-item a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .category-item a:hover {
+            color: #007BFF;
+            
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{{ title }}</h1>
+    </header>
+    <main>
+        <h1>Выберите категорию для парсинга:</h1>
+        <ul class="category-list">
+            {% for category in categories %}
+                <li class="category-item">
+                    <a href="/parse/{{ category }}">{{ category }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
+</body>
+</html>
