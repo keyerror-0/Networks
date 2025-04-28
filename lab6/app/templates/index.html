@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }} - URL Shortener</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .url-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .url-text {
+            flex-grow: 1;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="mb-4">URL Manager</h1>
+        
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-info">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title">Add New URL</h2>
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        {{ form.url.label }}
+                        {{ form.url(class="form-control", placeholder="https://example.com") }}
+                        {% for error in form.url.errors %}
+                        <small class="text-danger">{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                    {{ form.submit(class="btn btn-primary") }}
+                </form>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Recent URLs</h2>
+                {% if urls %}
+                    {% for url in urls %}
+                    <div class="url-item">
+                        <div class="url-text">
+                            <a href="{{ url.url }}" target="_blank">{{ url.url }}</a>
+                            <small class="text-muted d-block">{{ url.created_at.strftime('%Y-%m-%d %H:%M') }}</small>
+                        </div>
+                        <form method="POST" action="{{ url_for('delete_url', url_id=url.id) }}">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No URLs yet. Add your first URL above!</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
