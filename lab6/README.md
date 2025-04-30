@@ -7,6 +7,7 @@ A web application for storing and managing URLs using Flask and PostgreSQL, depl
 - 🐳 **Dockerized Architecture**:
   - `web` - Flask application (port 5000)
   - `db` - PostgreSQL 13 database
+  - `nginx` - domain resolving
 - 🌐 **Custom Docker Network** for inter-container communication
 - 🔐 **Environment Variable Security** with `.env` file
 - 🔄 **Automatic Database Initialization**
@@ -52,30 +53,17 @@ SECRET_KEY=your-secure-secret-key
 
 ## Running the Application
 ```bash
-# Make scripts executable
-chmod +x *.sh
+# start docker - compose
+docker-compose up --build
 
-# Start containers
-./start.sh
 ```
-Access application at: [http://localhost:5000](http://localhost:5000)
 
 ## Stopping the Application
 ```bash
-./stop.sh
+docker-compose down
 ```
 
 ## Troubleshooting
-
-### Permission Issues
-```bash
-sudo chmod +x *.sh  # Linux/MacOS
-```
-
-### Line Ending Conflicts (Windows/WSL)
-```bash
-sudo apt-get install dos2unix && dos2unix *.sh
-```
 
 ### Port Conflicts
 1. Modify in `.env`:

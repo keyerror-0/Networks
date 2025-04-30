@@ -3,7 +3,6 @@ version: '3.8'
 services:
   db:
     image: postgres:13
-    container_name: db
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
@@ -20,7 +19,6 @@ services:
 
   web:
     build: .
-    container_name: web
     environment:
       SECRET_KEY: ${SECRET_KEY}
       DATABASE_URL: postgresql://${DB_USER}:${DB_PASSWORD}@db:5432/${DB_NAME}
@@ -34,20 +32,21 @@ services:
       db:
         condition: service_healthy
     expose:
-      - 5000  # Открываем порт только для внутренней сети
+      - 5000
 
   nginx:
-    container_name: nginx
-    image: nginx:alpine
+    build:
+      context: ./nginx
+      args:
+        - DATABASE_CODE=DB1-LITE  # Меняем на DB3-LITE для определения городов
+        - TOKEN=9trA2fVahwyNaj7iRSaRHqfwzQgFqJMQWI7KKBOjV6XRXkU6x57b1fUbGyDtan88
     ports:
       - "80:80"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
-    depends_on:
-      - web
     networks:
       - app-net
-
+    depends_on:
+      - web
+      
 volumes:
   postgres_data:
 
