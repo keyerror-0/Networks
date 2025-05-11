@@ -24,7 +24,9 @@ services:
     environment:
       SECRET_KEY: ${SECRET_KEY}
       DATABASE_URL: postgresql://${DB_USER}:${DB_PASSWORD}@db:5432/${DB_NAME}
-      FLASK_APP: "app.py"
+      FLASK_APP: ${FLASK_APP}
+      FLASK_RUN_HOST: ${FLASK_RUN_HOST}
+      FLASK_RUN_PORT: ${FLASK_RUN_PORT}
     volumes:
       - type: tmpfs
         target: /project/migrations
@@ -34,7 +36,7 @@ services:
       db:
         condition: service_healthy
     expose:
-      - 5000  # Открываем порт только для внутренней сети
+      - 5000
 
   nginx:
     container_name: nginx
